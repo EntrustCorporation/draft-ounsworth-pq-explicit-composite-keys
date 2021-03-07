@@ -1,0 +1,66 @@
+-- Draft ASN.1 for explicit composite signatures - 20200506
+
+-- ExplicitCompositeSignatureValue - The data structure for a composite signature value
+-- SignatureValue1 and SignatureValue2 are the types of the two signature values
+-- TODO This definition doesn't work in cases (like sa-sha256WithRSAEncryption)
+-- where &Value is absent in SIGNATURE-ALGORITHM
+ExplicitCompositeSignatureValue{SignatureValue1, SignatureValue2} ::= SEQUENCE {
+    firstSignatureValue   SignatureValue1,  -- When SignatureValue is missing, the type is OCTET STRING, containing the raw value
+    secondSignatureValue  SignatureValue2
+}
+
+-- ExplicitCompositePublicKey - The data structure for a composite public key
+-- FirstPublicKeyType and SecondPublicKeyType are needed because PUBLIC-KEY contains
+-- a set of public key types, not a single type.
+-- TODO The parameters should be optional only if they are marked optional in the PUBLIC-KEY
+ExplicitCompositePublicKey{PUBLIC-KEY:firstPublicKey, FirstPublicKeyType, PUBLIC-KEY:secondPublicKey, SecondPublicKeyType} ::= SEQUENCE {
+    firstPublicKey SEQUENCE {
+        params firstPublicKey.&Params OPTIONAL,
+	publicKey FirstPublicKeyType
+    },
+    secondPublicKey SEQUENCE {
+        params secondPublicKey.&Params OPTIONAL,
+	publicKey SecondPublicKeyType
+    }
+}
+
+-- ExplicitSignatureParams - The data structure for composite signature parameters
+-- TODO firstParams and secondParams should be optional only if they are marked optional
+-- in SIGNATURE-ALGORITHM
+ExplicitSignatureParams{SIGNATURE-ALGORITHM:firstAlg, SIGNATURE-ALGORITHM:secondAlg} ::= SEQUENCE {
+    firstParams firstAlg.&Params OPTIONAL,
+    secondParams secondAlg.&Params OPTIONAL
+}
+
+-- TODO - CERT-KEY-USAGE should contain the intersection of the usages from firstPublicKey, secondPublicKey and the four listed below
+-- pk-explicitComposite - Composite public key information object
+pk-explicitComposite{OBJECT IDENTIFIER:id, PUBLIC-KEY:firstPublicKey, FirstPublicKeyType, PUBLIC-KEY:secondPublicKey, SecondPublicKeyType} PUBLIC-KEY ::= {
+    IDENTIFIER id
+    KEY ExplicitCompositePublicKey{firstPublicKey, FirstPublicKeyType, secondPublicKey, SecondPublicKeyType}
+    PARAMS ARE absent
+    CERT-KEY-USAGE {digitalSignature, nonRepudiation, keyCertSign, cRLSign}
+}
+
+-- TODO - Would it be possible to make these definitions compatible with n signature algorithms instead of 2?  Is it desired?
+-- sa-explicitCompositeSignatureAlgorithm - Composite signature algorithm information object
+sa-explicitCompositeSignatureAlgorithm{OBJECT IDENTIFIER:algId, SIGNATURE-ALGORITHM:firstAlg, PUBLIC-KEY:firstPublicKey, FirstPublicKeyType, SIGNATURE-ALGORITHM:secondAlg, PUBLIC-KEY:secondPublicKey, SecondPublicKeyType} SIGNATURE-ALGORITHM ::= {
+    IDENTIFIER algId
+    VALUE ExplicitCompositeSignatureValue{firstAlg.&Value, secondAlg.&Value}
+    PARAMS TYPE ExplicitSignatureParams{firstAlg, secondAlg} ARE required
+    PUBLIC-KEYS { pk-explicitComposite{algId, firstPublicKey, FirstPublicKeyType, secondPublicKey, SecondPublicKeyType} }
+    SMIME-CAPS { IDENTIFIED BY algId }
+}
+
+-- To add support for a new pair of algorithms, all that is required is the following two constructs:
+
+id-sa-entrust-sha256RSAandECDSA OBJECT IDENTIFIER ::= { 1 2 3 4 }
+
+sa-entrust-sha256RSAandECDSA SIGNATURE-ALGORITHM ::= sa-explicitCompositeSignatureAlgorithm{
+    id-sa-entrust-sha256RSAandECDSA,
+    sa-sha256WithRSAEncryption,
+    pk-rsa,
+    RSAPublicKey,
+    sa-ecdsaWithSHA256,
+    pk-ec,
+    ECPoint
+}
