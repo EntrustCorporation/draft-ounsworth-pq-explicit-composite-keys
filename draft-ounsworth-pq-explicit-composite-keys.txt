@@ -5,7 +5,7 @@
 LAMPS                                              M. Ounsworth (Editor)
 Internet-Draft                                                 S. Mister
 Intended status: Standards Track                                 Entrust
-Expires: September 8, 2021                                March 07, 2021
+Expires: September 22, 2021                               March 21, 2021
 
 
         Explicit Pairwise Composite Keys For Use In Internet PKI
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Ounsworth (Editor) & MisExpires September 8, 2021               [Page 1]
+Ounsworth (Editor) & MiExpires September 22, 2021               [Page 1]
 
 Internet-Draft         PQ Explicit Composite Keys             March 2021
 
@@ -61,7 +61,7 @@ Internet-Draft         PQ Explicit Composite Keys             March 2021
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 8, 2021.
+   This Internet-Draft will expire on September 22, 2021.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Ounsworth (Editor) & MisExpires September 8, 2021               [Page 2]
+Ounsworth (Editor) & MiExpires September 22, 2021               [Page 2]
 
 Internet-Draft         PQ Explicit Composite Keys             March 2021
 
@@ -165,7 +165,7 @@ Internet-Draft         PQ Explicit Composite Keys             March 2021
 
 
 
-Ounsworth (Editor) & MisExpires September 8, 2021               [Page 3]
+Ounsworth (Editor) & MiExpires September 22, 2021               [Page 3]
 
 Internet-Draft         PQ Explicit Composite Keys             March 2021
 
@@ -221,7 +221,7 @@ Internet-Draft         PQ Explicit Composite Keys             March 2021
 
 
 
-Ounsworth (Editor) & MisExpires September 8, 2021               [Page 4]
+Ounsworth (Editor) & MiExpires September 22, 2021               [Page 4]
 
 Internet-Draft         PQ Explicit Composite Keys             March 2021
 
@@ -277,7 +277,7 @@ pk-explicitComposite{OBJECT IDENTIFIER:id, PUBLIC-KEY:firstPublicKey, FirstPubli
 
 
 
-Ounsworth (Editor) & MisExpires September 8, 2021               [Page 5]
+Ounsworth (Editor) & MiExpires September 22, 2021               [Page 5]
 
 Internet-Draft         PQ Explicit Composite Keys             March 2021
 
@@ -304,7 +304,7 @@ ExplicitCompositePublicKey{PUBLIC-KEY:firstPublicKey, FirstPublicKeyType, PUBLIC
    The composite private key data is represented by the following
    structure:
 
-   CompositePrivateKey ::= SEQUENCE SIZE (1..MAX) OF OneAsymmetricKey
+   CompositePrivateKey ::= SEQUENCE SIZE (2..MAX) OF OneAsymmetricKey
 
    Each element is a OneAsymmetricKey [RFC5958] object for a component
    private key.
@@ -333,7 +333,7 @@ ExplicitCompositePublicKey{PUBLIC-KEY:firstPublicKey, FirstPublicKeyType, PUBLIC
 
 
 
-Ounsworth (Editor) & MisExpires September 8, 2021               [Page 6]
+Ounsworth (Editor) & MiExpires September 22, 2021               [Page 6]
 
 Internet-Draft         PQ Explicit Composite Keys             March 2021
 
@@ -389,7 +389,7 @@ sa-explicitCompositeSignatureAlgorithm{OBJECT IDENTIFIER:algId, SIGNATURE-ALGORI
 
 
 
-Ounsworth (Editor) & MisExpires September 8, 2021               [Page 7]
+Ounsworth (Editor) & MiExpires September 22, 2021               [Page 7]
 
 Internet-Draft         PQ Explicit Composite Keys             March 2021
 
@@ -445,7 +445,7 @@ Internet-Draft         PQ Explicit Composite Keys             March 2021
 
 
 
-Ounsworth (Editor) & MisExpires September 8, 2021               [Page 8]
+Ounsworth (Editor) & MiExpires September 22, 2021               [Page 8]
 
 Internet-Draft         PQ Explicit Composite Keys             March 2021
 
@@ -501,7 +501,7 @@ Internet-Draft         PQ Explicit Composite Keys             March 2021
 
 
 
-Ounsworth (Editor) & MisExpires September 8, 2021               [Page 9]
+Ounsworth (Editor) & MiExpires September 22, 2021               [Page 9]
 
 Internet-Draft         PQ Explicit Composite Keys             March 2021
 
@@ -557,7 +557,7 @@ Internet-Draft         PQ Explicit Composite Keys             March 2021
 
 
 
-Ounsworth (Editor) & MisExpires September 8, 2021              [Page 10]
+Ounsworth (Editor) & MiExpires September 22, 2021              [Page 10]
 
 Internet-Draft         PQ Explicit Composite Keys             March 2021
 
@@ -613,7 +613,7 @@ Internet-Draft         PQ Explicit Composite Keys             March 2021
 
 
 
-Ounsworth (Editor) & MisExpires September 8, 2021              [Page 11]
+Ounsworth (Editor) & MiExpires September 22, 2021              [Page 11]
 
 Internet-Draft         PQ Explicit Composite Keys             March 2021
 
@@ -653,9 +653,9 @@ Internet-Draft         PQ Explicit Composite Keys             March 2021
        PRIVATE-KEY CompositePrivateKey
    }
 
-   CompositePublicKey ::= SEQUENCE SIZE (1..MAX) OF SubjectPublicKeyInfo
+   CompositePublicKey ::= SEQUENCE SIZE (2..MAX) OF SubjectPublicKeyInfo
 
-   CompositePrivateKey ::= SEQUENCE SIZE (1..MAX) OF OneAsymmetricKey
+   CompositePrivateKey ::= SEQUENCE SIZE (2..MAX) OF OneAsymmetricKey
 
    --
    -- Signature Algorithm
@@ -669,16 +669,16 @@ Internet-Draft         PQ Explicit Composite Keys             March 2021
 
 
 
-Ounsworth (Editor) & MisExpires September 8, 2021              [Page 12]
+Ounsworth (Editor) & MiExpires September 22, 2021              [Page 12]
 
 Internet-Draft         PQ Explicit Composite Keys             March 2021
 
 
        SMIME-CAPS { IDENTIFIED BY id-alg-composite } }
 
-   CompositeParams ::= SEQUENCE SIZE (1..MAX) OF AlgorithmIdentifier
+   CompositeParams ::= SEQUENCE SIZE (2..MAX) OF AlgorithmIdentifier
 
-   CompositeSignatureValue ::= SEQUENCE SIZE (1..MAX) OF BIT STRING
+   CompositeSignatureValue ::= SEQUENCE SIZE (2..MAX) OF BIT STRING
 
    END
 
@@ -725,7 +725,7 @@ sa-entrust-sha256RSAandECDSA SIGNATURE-ALGORITHM ::= sa-explicitCompositeSignatu
 
 
 
-Ounsworth (Editor) & MisExpires September 8, 2021              [Page 13]
+Ounsworth (Editor) & MiExpires September 22, 2021              [Page 13]
 
 Internet-Draft         PQ Explicit Composite Keys             March 2021
 
@@ -781,7 +781,7 @@ Internet-Draft         PQ Explicit Composite Keys             March 2021
 
 
 
-Ounsworth (Editor) & MisExpires September 8, 2021              [Page 14]
+Ounsworth (Editor) & MiExpires September 22, 2021              [Page 14]
 
 Internet-Draft         PQ Explicit Composite Keys             March 2021
 
@@ -837,4 +837,4 @@ Authors' Addresses
 
 
 
-Ounsworth (Editor) & MisExpires September 8, 2021              [Page 15]
+Ounsworth (Editor) & MiExpires September 22, 2021              [Page 15]

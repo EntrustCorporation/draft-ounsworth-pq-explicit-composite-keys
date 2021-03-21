@@ -409,7 +409,7 @@
 
   <meta name="dct.creator" content="Ounsworth (Editor), M. and S. Mister" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-ounsworth-pq-explicit-composite-keys-00" />
-  <meta name="dct.issued" scheme="ISO8601" content="2021-03-07" />
+  <meta name="dct.issued" scheme="ISO8601" content="2021-03-21" />
   <meta name="dct.abstract" content="With the widespread adoption of post-quantum cryptography will come the need for an entity to possess multiple public keys on different cryptographic algorithms. Since the trustworthiness of individual post-quantum algorithms is at question, a multi-key cryptographic operation will need to be performed in such a way that breaking it requires breaking each of the component algorithms individually. This requires defining new structures for holding composite public keys and composite signature data. This draft defines a structure generic enough to be useful beyond the post-quantum transition for any situation where a widely-supported but untrusted algorithm is being migrated to newer cryptography. This document defines composite structures for explicit pairs of algorithms. It defines the structures ... TODO ORIGINAL: CompositePublicKey, CompositeSignatureValue, and CompositeParams, which are sequences of the respective structure for each component algorithm and agnostic to the choice of algorithms, as well as more compressed structures for cases where algorithm OIDs are defined that explicitly list the component algorithms. This document also defines algorithms for generating and verifying composite signatures. This document makes no assumptions about what the component algorithms are, provided that their algorithm identifiers and signature generation and verification algorithms are defined. " />
   <meta name="description" content="With the widespread adoption of post-quantum cryptography will come the need for an entity to possess multiple public keys on different cryptographic algorithms. Since the trustworthiness of individual post-quantum algorithms is at question, a multi-key cryptographic operation will need to be performed in such a way that breaking it requires breaking each of the component algorithms individually. This requires defining new structures for holding composite public keys and composite signature data. This draft defines a structure generic enough to be useful beyond the post-quantum transition for any situation where a widely-supported but untrusted algorithm is being migrated to newer cryptography. This document defines composite structures for explicit pairs of algorithms. It defines the structures ... TODO ORIGINAL: CompositePublicKey, CompositeSignatureValue, and CompositeParams, which are sequences of the respective structure for each component algorithm and agnostic to the choice of algorithms, as well as more compressed structures for cases where algorithm OIDs are defined that explicitly list the component algorithms. This document also defines algorithms for generating and verifying composite signatures. This document makes no assumptions about what the component algorithms are, provided that their algorithm identifiers and signature generation and verification algorithms are defined. " />
 
@@ -433,8 +433,8 @@
 <td class="right">Entrust</td>
 </tr>
 <tr>
-<td class="left">Expires: September 8, 2021</td>
-<td class="right">March 07, 2021</td>
+<td class="left">Expires: September 22, 2021</td>
+<td class="right">March 21, 2021</td>
 </tr>
 
     	
@@ -452,7 +452,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on September 8, 2021.</p>
+<p>This Internet-Draft will expire on September 22, 2021.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2021 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -604,7 +604,7 @@ ExplicitCompositePublicKey{PUBLIC-KEY:firstPublicKey, FirstPublicKeyType, PUBLIC
 </h1>
 <p id="rfc.section.2.2.p.1">The composite private key data is represented by the following structure:</p>
 <pre>
-CompositePrivateKey ::= SEQUENCE SIZE (1..MAX) OF OneAsymmetricKey
+CompositePrivateKey ::= SEQUENCE SIZE (2..MAX) OF OneAsymmetricKey
 </pre>
 <p id="rfc.section.2.2.p.2">Each element is a OneAsymmetricKey <a href="#RFC5958" class="xref">[RFC5958]</a> object for a component private key.</p>
 <p id="rfc.section.2.2.p.3">The corresponding AlgorithmIdentifier for a composite private key MUST use the id-alg-composite object identifier, and the parameters field MUST be absent.</p>
@@ -787,9 +787,9 @@ pk-Composite PUBLIC-KEY ::= {
     PRIVATE-KEY CompositePrivateKey
 }
 
-CompositePublicKey ::= SEQUENCE SIZE (1..MAX) OF SubjectPublicKeyInfo
+CompositePublicKey ::= SEQUENCE SIZE (2..MAX) OF SubjectPublicKeyInfo
 
-CompositePrivateKey ::= SEQUENCE SIZE (1..MAX) OF OneAsymmetricKey
+CompositePrivateKey ::= SEQUENCE SIZE (2..MAX) OF OneAsymmetricKey
 
 --
 -- Signature Algorithm
@@ -802,9 +802,9 @@ sa-CompositeSignature SIGNATURE-ALGORITHM ::= {
     PUBLIC-KEYS { pk-Composite }
     SMIME-CAPS { IDENTIFIED BY id-alg-composite } }
 
-CompositeParams ::= SEQUENCE SIZE (1..MAX) OF AlgorithmIdentifier
+CompositeParams ::= SEQUENCE SIZE (2..MAX) OF AlgorithmIdentifier
 
-CompositeSignatureValue ::= SEQUENCE SIZE (1..MAX) OF BIT STRING
+CompositeSignatureValue ::= SEQUENCE SIZE (2..MAX) OF BIT STRING
 
 END
 
