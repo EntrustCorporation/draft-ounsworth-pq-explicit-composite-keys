@@ -24,12 +24,11 @@ author:
     -
       ins: M. Ounsworth (Editor)
       name: Mike Ounsworth
-      org: Entrust Limited
       abbrev: Entrust
-      street: 1000 Innovation Drive
+      street: 2500 Solandt Road – Suite 100
       city: Ottawa, Ontario
       country: Canada
-      code: K2K 1E3
+      code: K2K 3G5
       email: mike.ounsworth@entrustdatacard.com
 
     -
@@ -221,6 +220,8 @@ ExplicitCompositePublicKey{PUBLIC-KEY:firstPublicKey, FirstPublicKeyType, PUBLIC
 
 
 ## Composite Private Key
+
+EDNOTE: THIS IS WRONG. (copied from generic draft) we need to do some work to come up with a private key structure.
 
 The composite private key data is represented by the following structure:
 
@@ -488,6 +489,8 @@ sa-entrust-sha256RSAandECDSA SIGNATURE-ALGORITHM ::= sa-explicitCompositeSignatu
     ECPoint
 }
 ~~~
+
+TODO: run this through an ASN.1 compiler and list here what the final generated structures look like.
 
 ## Intellectual Property Considerations
 

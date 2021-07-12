@@ -5,7 +5,7 @@
 LAMPS                                              M. Ounsworth (Editor)
 Internet-Draft                                                 S. Mister
 Intended status: Standards Track                                 Entrust
-Expires: September 22, 2021                               March 21, 2021
+Expires: January 13, 2022                                  July 12, 2021
 
 
         Explicit Pairwise Composite Keys For Use In Internet PKI
@@ -53,15 +53,15 @@ Status of This Memo
 
 
 
-Ounsworth (Editor) & MiExpires September 22, 2021               [Page 1]
+Ounsworth (Editor) & MisExpires January 13, 2022                [Page 1]
 
-Internet-Draft         PQ Explicit Composite Keys             March 2021
+Internet-Draft         PQ Explicit Composite Keys              July 2021
 
 
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on September 22, 2021.
+   This Internet-Draft will expire on January 13, 2022.
 
 Copyright Notice
 
@@ -86,17 +86,17 @@ Table of Contents
      2.1.  Composite Keys  . . . . . . . . . . . . . . . . . . . . .   5
      2.2.  Composite Private Key . . . . . . . . . . . . . . . . . .   6
      2.3.  Composite Signature . . . . . . . . . . . . . . . . . . .   6
-       2.3.1.  Explicit Signature Params . . . . . . . . . . . . . .   6
+       2.3.1.  Explicit Signature Params . . . . . . . . . . . . . .   7
        2.3.2.  Explicit Composite Signature Algorithm  . . . . . . .   7
      2.4.  Encoding Rules  . . . . . . . . . . . . . . . . . . . . .   7
    3.  In Practice . . . . . . . . . . . . . . . . . . . . . . . . .   8
      3.1.  PEM Storage of Composite Private Keys . . . . . . . . . .   8
-     3.2.  Asymmetric Key Packages (CMS) . . . . . . . . . . . . . .   8
+     3.2.  Asymmetric Key Packages (CMS) . . . . . . . . . . . . . .   9
      3.3.  Cryptographic protocols . . . . . . . . . . . . . . . . .   9
    4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  10
    5.  Security Considerations . . . . . . . . . . . . . . . . . . .  10
      5.1.  Policy for Deprecated and Acceptable Algorithms . . . . .  10
-     5.2.  Protection of Private Keys  . . . . . . . . . . . . . . .  10
+     5.2.  Protection of Private Keys  . . . . . . . . . . . . . . .  11
      5.3.  Checking for Compromised Key Reuse  . . . . . . . . . . .  11
      5.4.  Composite Encryption and KEMs . . . . . . . . . . . . . .  11
    6.  Appendices  . . . . . . . . . . . . . . . . . . . . . . . . .  11
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Ounsworth (Editor) & MiExpires September 22, 2021               [Page 2]
+Ounsworth (Editor) & MisExpires January 13, 2022                [Page 2]
 
-Internet-Draft         PQ Explicit Composite Keys             March 2021
+Internet-Draft         PQ Explicit Composite Keys              July 2021
 
 
      8.2.  Informative References  . . . . . . . . . . . . . . . . .  15
@@ -165,9 +165,9 @@ Internet-Draft         PQ Explicit Composite Keys             March 2021
 
 
 
-Ounsworth (Editor) & MiExpires September 22, 2021               [Page 3]
+Ounsworth (Editor) & MisExpires January 13, 2022                [Page 3]
 
-Internet-Draft         PQ Explicit Composite Keys             March 2021
+Internet-Draft         PQ Explicit Composite Keys              July 2021
 
 
    14 [RFC2119] [RFC8174] when, and only when, they appear in all
@@ -221,9 +221,9 @@ Internet-Draft         PQ Explicit Composite Keys             March 2021
 
 
 
-Ounsworth (Editor) & MiExpires September 22, 2021               [Page 4]
+Ounsworth (Editor) & MisExpires January 13, 2022                [Page 4]
 
-Internet-Draft         PQ Explicit Composite Keys             March 2021
+Internet-Draft         PQ Explicit Composite Keys              July 2021
 
 
    o  The id-alg-composite is an OID identifying a composite public key
@@ -277,9 +277,9 @@ pk-explicitComposite{OBJECT IDENTIFIER:id, PUBLIC-KEY:firstPublicKey, FirstPubli
 
 
 
-Ounsworth (Editor) & MiExpires September 22, 2021               [Page 5]
+Ounsworth (Editor) & MisExpires January 13, 2022                [Page 5]
 
-Internet-Draft         PQ Explicit Composite Keys             March 2021
+Internet-Draft         PQ Explicit Composite Keys              July 2021
 
 
 -- ExplicitCompositePublicKey - The data structure for a composite public key
@@ -300,6 +300,9 @@ ExplicitCompositePublicKey{PUBLIC-KEY:firstPublicKey, FirstPublicKeyType, PUBLIC
 }
 
 2.2.  Composite Private Key
+
+   EDNOTE: THIS IS WRONG. (copied from generic draft) we need to do some
+   work to come up with a private key structure.
 
    The composite private key data is represented by the following
    structure:
@@ -324,19 +327,22 @@ ExplicitCompositePublicKey{PUBLIC-KEY:firstPublicKey, FirstPublicKeyType, PUBLIC
    signature structures that are explicitely bound to the specified pair
    of algorithms.
 
+
+
+
+
+
+
+Ounsworth (Editor) & MisExpires January 13, 2022                [Page 6]
+
+Internet-Draft         PQ Explicit Composite Keys              July 2021
+
+
 2.3.1.  Explicit Signature Params
 
    The following ASN.1 object class then automatically generates the
    signature params structure from the types defined in pk-
    explicitComposite.
-
-
-
-
-Ounsworth (Editor) & MiExpires September 22, 2021               [Page 6]
-
-Internet-Draft         PQ Explicit Composite Keys             March 2021
-
 
 -- ExplicitSignatureParams - The data structure for composite signature parameters
 -- TODO firstParams and secondParams should be optional only if they are marked optional
@@ -380,19 +386,19 @@ sa-explicitCompositeSignatureAlgorithm{OBJECT IDENTIFIER:algId, SIGNATURE-ALGORI
    When an octet string is required, the DER encoding of the composite
    data structure SHALL be used directly.
 
+
+
+
+Ounsworth (Editor) & MisExpires January 13, 2022                [Page 7]
+
+Internet-Draft         PQ Explicit Composite Keys              July 2021
+
+
    When a bit string is required, the octets of the DER encoded
    composite data structure SHALL be used as the bits of the bit string,
    with the most significant bit of the first octet becoming the first
    bit, and so on, ending with the least significant bit of the last
    octet becoming the last bit of the bit string.
-
-
-
-
-Ounsworth (Editor) & MiExpires September 22, 2021               [Page 7]
-
-Internet-Draft         PQ Explicit Composite Keys             March 2021
-
 
    In the interests of simplicity and avoiding compatibility issues,
    implementations that parse these structures MAY accept both BER and
@@ -436,19 +442,19 @@ Internet-Draft         PQ Explicit Composite Keys             March 2021
    defined in [RFC7468] section 10 and 11 for plaintext and encrypted
    private keys, respectively.
 
+
+
+
+Ounsworth (Editor) & MisExpires January 13, 2022                [Page 8]
+
+Internet-Draft         PQ Explicit Composite Keys              July 2021
+
+
 3.2.  Asymmetric Key Packages (CMS)
 
    The Cryptographic Message Syntax (CMS), as defined in [RFC5652], can
    be used to digitally sign, digest, authenticate, or encrypt the
    asymmetric key format content type.
-
-
-
-
-Ounsworth (Editor) & MiExpires September 22, 2021               [Page 8]
-
-Internet-Draft         PQ Explicit Composite Keys             March 2021
-
 
    When encoding composite private keys, the privateKeyAlgorithm in the
    OneAsymmetricKey SHALL be set to id-alg-composite.
@@ -493,18 +499,18 @@ Internet-Draft         PQ Explicit Composite Keys             March 2021
    o  Overhead; including certificate size, signature processing time,
       and size of the signature.
 
+
+
+Ounsworth (Editor) & MisExpires January 13, 2022                [Page 9]
+
+Internet-Draft         PQ Explicit Composite Keys              July 2021
+
+
    o  How to deal with crypto protocols that use public key encryption
       algorithms; this document only lists how to work with signature
       algorithms.  Encoding composite public keys is straightforward;
       encoding composite ciphertexts is less so - we decided to put that
       off to another draft.
-
-
-
-Ounsworth (Editor) & MiExpires September 22, 2021               [Page 9]
-
-Internet-Draft         PQ Explicit Composite Keys             March 2021
-
 
 4.  IANA Considerations
 
@@ -549,19 +555,17 @@ Internet-Draft         PQ Explicit Composite Keys             March 2021
    for example only algorithms that provide similar security levels
    should be combined together.
 
+
+
+Ounsworth (Editor) & MisExpires January 13, 2022               [Page 10]
+
+Internet-Draft         PQ Explicit Composite Keys              July 2021
+
+
 5.2.  Protection of Private Keys
 
    Structures described in this document do not protect private keys in
    any way unless combined with a security protocol or encryption
-
-
-
-
-Ounsworth (Editor) & MiExpires September 22, 2021              [Page 10]
-
-Internet-Draft         PQ Explicit Composite Keys             March 2021
-
-
    properties of the objects (if any) where the CompositePrivateKey is
    used (see next Section).
 
@@ -607,17 +611,16 @@ Internet-Draft         PQ Explicit Composite Keys             March 2021
 
    EXPORTS ALL;
 
+
+
+Ounsworth (Editor) & MisExpires January 13, 2022               [Page 11]
+
+Internet-Draft         PQ Explicit Composite Keys              July 2021
+
+
    IMPORTS
      PUBLIC-KEY, SIGNATURE-ALGORITHM
        FROM AlgorithmInformation-2009  -- RFC 5912 [X509ASN1]
-
-
-
-Ounsworth (Editor) & MiExpires September 22, 2021              [Page 11]
-
-Internet-Draft         PQ Explicit Composite Keys             March 2021
-
-
          { iso(1) identified-organization(3) dod(6) internet(1)
            security(5) mechanisms(5) pkix(7) id-mod(0)
            id-mod-algorithmInformation-02(58) }
@@ -663,17 +666,17 @@ Internet-Draft         PQ Explicit Composite Keys             March 2021
 
    sa-CompositeSignature SIGNATURE-ALGORITHM ::= {
        IDENTIFIER id-alg-composite
+
+
+
+Ounsworth (Editor) & MisExpires January 13, 2022               [Page 12]
+
+Internet-Draft         PQ Explicit Composite Keys              July 2021
+
+
        VALUE CompositeSignatureValue
        PARAMS TYPE CompositeParams ARE required
        PUBLIC-KEYS { pk-Composite }
-
-
-
-Ounsworth (Editor) & MiExpires September 22, 2021              [Page 12]
-
-Internet-Draft         PQ Explicit Composite Keys             March 2021
-
-
        SMIME-CAPS { IDENTIFIED BY id-alg-composite } }
 
    CompositeParams ::= SEQUENCE SIZE (2..MAX) OF AlgorithmIdentifier
@@ -702,6 +705,9 @@ sa-entrust-sha256RSAandECDSA SIGNATURE-ALGORITHM ::= sa-explicitCompositeSignatu
     ECPoint
 }
 
+   TODO: run this through an ASN.1 compiler and list here what the final
+   generated structures look like.
+
 6.3.  Intellectual Property Considerations
 
    The following IPR Disclosure relates to this draft:
@@ -717,18 +723,16 @@ sa-entrust-sha256RSAandECDSA SIGNATURE-ALGORITHM ::= sa-explicitCompositeSignatu
    electronic mail and VOIP traffic over the past year in pursuit of
    this document:
 
+
+
+Ounsworth (Editor) & MisExpires January 13, 2022               [Page 13]
+
+Internet-Draft         PQ Explicit Composite Keys              July 2021
+
+
    John Gray (Entrust Datacard), Serge Mister (Entrust Datacard), Scott
    Fluhrer (Cisco Systems), Panos Kampanakis (Cisco Systems), Daniel Van
    Geest (ISARA), and Tim Hollebeek (Digicert).
-
-
-
-
-
-Ounsworth (Editor) & MiExpires September 22, 2021              [Page 13]
-
-Internet-Draft         PQ Explicit Composite Keys             March 2021
-
 
    We are grateful to all, including any contributors who may have been
    inadvertently omitted from this list.
@@ -773,18 +777,18 @@ Internet-Draft         PQ Explicit Composite Keys             March 2021
               (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
               <https://www.rfc-editor.org/info/rfc5280>.
 
+
+
+
+
+Ounsworth (Editor) & MisExpires January 13, 2022               [Page 14]
+
+Internet-Draft         PQ Explicit Composite Keys              July 2021
+
+
    [RFC5652]  Housley, R., "Cryptographic Message Syntax (CMS)", STD 70,
               RFC 5652, DOI 10.17487/RFC5652, September 2009,
               <https://www.rfc-editor.org/info/rfc5652>.
-
-
-
-
-
-Ounsworth (Editor) & MiExpires September 22, 2021              [Page 14]
-
-Internet-Draft         PQ Explicit Composite Keys             March 2021
-
 
    [RFC5958]  Turner, S., "Asymmetric Key Packages", RFC 5958,
               DOI 10.17487/RFC5958, August 2010,
@@ -818,12 +822,24 @@ Internet-Draft         PQ Explicit Composite Keys             March 2021
 Authors' Addresses
 
    Mike Ounsworth
-   Entrust Limited
-   1000 Innovation Drive
-   Ottawa, Ontario  K2K 1E3
+   2500 Solandt Road -- Suite 100
+   Ottawa, Ontario  K2K 3G5
    Canada
 
    Email: mike.ounsworth@entrustdatacard.com
+
+
+
+
+
+
+
+
+
+
+Ounsworth (Editor) & MisExpires January 13, 2022               [Page 15]
+
+Internet-Draft         PQ Explicit Composite Keys              July 2021
 
 
    Serge Mister
@@ -837,4 +853,44 @@ Authors' Addresses
 
 
 
-Ounsworth (Editor) & MiExpires September 22, 2021              [Page 15]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ounsworth (Editor) & MisExpires January 13, 2022               [Page 16]
