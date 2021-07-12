@@ -392,7 +392,6 @@
 <link href="#rfc.section.5.1" rel="Chapter" title="5.1 Policy for Deprecated and Acceptable Algorithms">
 <link href="#rfc.section.5.2" rel="Chapter" title="5.2 Protection of Private Keys">
 <link href="#rfc.section.5.3" rel="Chapter" title="5.3 Checking for Compromised Key Reuse">
-<link href="#rfc.section.5.4" rel="Chapter" title="5.4 Composite Encryption and KEMs">
 <link href="#rfc.section.6" rel="Chapter" title="6 Appendices">
 <link href="#rfc.section.6.1" rel="Chapter" title="6.1 ASN.1 Module">
 <link href="#rfc.section.6.2" rel="Chapter" title="6.2 Examples of defining explicit pairs">
@@ -410,8 +409,8 @@
   <meta name="dct.creator" content="Ounsworth (Editor), M. and S. Mister" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-ounsworth-pq-explicit-composite-keys-00" />
   <meta name="dct.issued" scheme="ISO8601" content="2021-07-12" />
-  <meta name="dct.abstract" content="With the widespread adoption of post-quantum cryptography will come the need for an entity to possess multiple public keys on different cryptographic algorithms. Since the trustworthiness of individual post-quantum algorithms is at question, a multi-key cryptographic operation will need to be performed in such a way that breaking it requires breaking each of the component algorithms individually. This requires defining new structures for holding composite public keys and composite signature data. This draft defines a structure generic enough to be useful beyond the post-quantum transition for any situation where a widely-supported but untrusted algorithm is being migrated to newer cryptography. This document defines composite structures for explicit pairs of algorithms. It defines the structures ... TODO ORIGINAL: CompositePublicKey, CompositeSignatureValue, and CompositeParams, which are sequences of the respective structure for each component algorithm and agnostic to the choice of algorithms, as well as more compressed structures for cases where algorithm OIDs are defined that explicitly list the component algorithms. This document also defines algorithms for generating and verifying composite signatures. This document makes no assumptions about what the component algorithms are, provided that their algorithm identifiers and signature generation and verification algorithms are defined. " />
-  <meta name="description" content="With the widespread adoption of post-quantum cryptography will come the need for an entity to possess multiple public keys on different cryptographic algorithms. Since the trustworthiness of individual post-quantum algorithms is at question, a multi-key cryptographic operation will need to be performed in such a way that breaking it requires breaking each of the component algorithms individually. This requires defining new structures for holding composite public keys and composite signature data. This draft defines a structure generic enough to be useful beyond the post-quantum transition for any situation where a widely-supported but untrusted algorithm is being migrated to newer cryptography. This document defines composite structures for explicit pairs of algorithms. It defines the structures ... TODO ORIGINAL: CompositePublicKey, CompositeSignatureValue, and CompositeParams, which are sequences of the respective structure for each component algorithm and agnostic to the choice of algorithms, as well as more compressed structures for cases where algorithm OIDs are defined that explicitly list the component algorithms. This document also defines algorithms for generating and verifying composite signatures. This document makes no assumptions about what the component algorithms are, provided that their algorithm identifiers and signature generation and verification algorithms are defined. " />
+  <meta name="dct.abstract" content="With the widespread adoption of post-quantum cryptography will come the need for an entity to possess multiple public keys on different cryptographic algorithms. Since the trustworthiness of individual post-quantum algorithms is at question, a multi-key cryptographic operation will need to be performed in such a way that breaking it requires breaking each of the component algorithms individually. This requires defining new structures for holding composite public keys and composite signature data. This draft defines a structure generic enough to be useful beyond the post-quantum transition for any situation where a widely-supported but untrusted algorithm is being migrated to newer cryptography. This document defines structures for binding an explicit pair of cryptographic algorithms together into a single object identifier, and it provides ASN.1 structures for encoding these pairwise composite public keys, private keys in wire protocols, as well as using them in conjunction with composite signatures, encryption and key transport mechanisms. " />
+  <meta name="description" content="With the widespread adoption of post-quantum cryptography will come the need for an entity to possess multiple public keys on different cryptographic algorithms. Since the trustworthiness of individual post-quantum algorithms is at question, a multi-key cryptographic operation will need to be performed in such a way that breaking it requires breaking each of the component algorithms individually. This requires defining new structures for holding composite public keys and composite signature data. This draft defines a structure generic enough to be useful beyond the post-quantum transition for any situation where a widely-supported but untrusted algorithm is being migrated to newer cryptography. This document defines structures for binding an explicit pair of cryptographic algorithms together into a single object identifier, and it provides ASN.1 structures for encoding these pairwise composite public keys, private keys in wire protocols, as well as using them in conjunction with composite signatures, encryption and key transport mechanisms. " />
 
 </head>
 
@@ -446,8 +445,7 @@
   
   <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
 <p>With the widespread adoption of post-quantum cryptography will come the need for an entity to possess multiple public keys on different cryptographic algorithms. Since the trustworthiness of individual post-quantum algorithms is at question, a multi-key cryptographic operation will need to be performed in such a way that breaking it requires breaking each of the component algorithms individually. This requires defining new structures for holding composite public keys and composite signature data. This draft defines a structure generic enough to be useful beyond the post-quantum transition for any situation where a widely-supported but untrusted algorithm is being migrated to newer cryptography.</p>
-<p>This document defines composite structures for explicit pairs of algorithms. It defines the structures ... TODO</p>
-<p>ORIGINAL: CompositePublicKey, CompositeSignatureValue, and CompositeParams, which are sequences of the respective structure for each component algorithm and agnostic to the choice of algorithms, as well as more compressed structures for cases where algorithm OIDs are defined that explicitly list the component algorithms. This document also defines algorithms for generating and verifying composite signatures. This document makes no assumptions about what the component algorithms are, provided that their algorithm identifiers and signature generation and verification algorithms are defined.</p>
+<p>This document defines structures for binding an explicit pair of cryptographic algorithms together into a single object identifier, and it provides ASN.1 structures for encoding these pairwise composite public keys, private keys in wire protocols, as well as using them in conjunction with composite signatures, encryption and key transport mechanisms.</p>
 <h1 id="rfc.status"><a href="#rfc.status">Status of This Memo</a></h1>
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
@@ -498,8 +496,6 @@
 </li>
 <li>5.3.   <a href="#rfc.section.5.3">Checking for Compromised Key Reuse</a>
 </li>
-<li>5.4.   <a href="#rfc.section.5.4">Composite Encryption and KEMs</a>
-</li>
 </ul><li>6.   <a href="#rfc.section.6">Appendices</a>
 </li>
 <ul><li>6.1.   <a href="#rfc.section.6.1">ASN.1 Module</a>
@@ -533,8 +529,9 @@
 <li>Algorithm strength uncertainty: During the transition period, some post-quantum signature and encryption algorithms will not be fully trusted, while also the trust in legacy public key algorithms will start to erode.  A relying party may learn some time after deployment that a public key algorithm has become untrustworthy, but in the interim, they may not know which algorithm an adversary has compromised.</li>
 <li>Backwards compatibility: During the transition period, post-quantum algorithms will not be supported by all clients.</li>
 </ul>
-<p id="rfc.section.1.p.4">This document provides a mechanism to address algorithm strength uncertainty by providing formats for encoding multiple public keys, private keys and signature values into existing public key and signature fields, as well as an algorithm for validating a composite signature. The issue of backwards compatibility is left open to be addressed in separate draft(s).</p>
-<p id="rfc.section.1.p.5">This document is intended for general applicability anywhere that public key structures or digital signatures are used within PKIX structures. While the CompositePublicKey structure defined herein could be used to carry encryption public keys, the semantics are beyond the scope of this document.</p>
+<p id="rfc.section.1.p.4">This document provides a mechanism to address algorithm strength uncertainty by providing formats for encoding multiple public keys and private keys into existing fields.</p>
+<p id="rfc.section.1.p.5">This document provides structures to encode explicit composite algorithm identifiers and parameters for use with composite signature, encryption, and key transport mechanisms defined in ~~ TODO cite corresponding drafts properly ~~.</p>
+<p id="rfc.section.1.p.6">This document is intended for general applicability anywhere that public key or private key structures are used within PKIX protocols.</p>
 <h1 id="rfc.section.1.1">
 <a href="#rfc.section.1.1">1.1.</a> <a href="#sec-terminology" id="sec-terminology">Terminology</a>
 </h1>
@@ -555,15 +552,7 @@
 </h1>
 <p id="rfc.section.2.p.1">In order for public keys and signatures to be composed of pairs of algorithms, we define encodings consisting of a sequence of public key and signature primitives (aka "component algorithms") such that these structures can be used as a drop-in replacement for existing public key or signature fields such as those found in PKCS#10 <a href="#RFC2986" class="xref">[RFC2986]</a>, CMP <a href="#RFC4210" class="xref">[RFC4210]</a>, X.509 <a href="#RFC5280" class="xref">[RFC5280]</a>, CMS <a href="#RFC5652" class="xref">[RFC5652]</a>.</p>
 <p id="rfc.section.2.p.2">This section defines the following structures:</p>
-<p></p>
-
-<ul>
-<li>The id-alg-composite is an OID identifying a composite public key or signature object.</li>
-<li>The CompositePublicKey carries all the public keys associated with an identity within a single public key structure.</li>
-<li>The CompositePrivateKey carries all the private keys associated with an identity within a single private key structure.</li>
-<li>The CompositeSignatureValue, carries a sequence of signatures that are generated by a CompositePrivateKey, and can be verified with the corresponding CompositePublicKey.</li>
-</ul>
-<p id="rfc.section.2.p.4">The choice to define composite algorithm parameters as a sequence inside the existing fields avoids the up-front need to define explicit OIDs for each combination of algorithm, as well as providing flexibility and backwards compatibility for clients that can be upgraded to understand the composite structure now and want to keep functioning even if they do not have implementations of all component algorithms. This comes at the expense of slightly larger wire protocols, and slightly higher complexity. For this reason, alternatives to the CompositePublicKey and CompositeSignatureValue structures are provided for the case where explicit algorithm OIDs are available.</p>
+<p id="rfc.section.2.p.3">~~ TODO ~~</p>
 <h1 id="rfc.section.2.1">
 <a href="#rfc.section.2.1">2.1.</a> <a href="#composite-keys" id="composite-keys">Composite Keys</a>
 </h1>
@@ -730,10 +719,6 @@ id-alg-composite OBJECT IDENTIFIER ::= {
 <a href="#rfc.section.5.3">5.3.</a> <a href="#checking-for-compromised-key-reuse" id="checking-for-compromised-key-reuse">Checking for Compromised Key Reuse</a>
 </h1>
 <p id="rfc.section.5.3.p.1">CA implementations need to be careful when checking for compromised key reuse, for example as required by WebTrust regulations; when checking for compromised keys, you MUST unpack the CompositePublicKey structure and compare individual component keys. In other words, when marking a key as revoked for key compromise, the individual component keys should be marked, not the composite key as a whole.</p>
-<h1 id="rfc.section.5.4">
-<a href="#rfc.section.5.4">5.4.</a> <a href="#composite-encryption-and-kems" id="composite-encryption-and-kems">Composite Encryption and KEMs</a>
-</h1>
-<p id="rfc.section.5.4.p.1">This document deals only with signature keys. While the CompositePublicKey and CompositePrivateKey structures could equally be used to hold encryption or KEM keys, the authors warn that there are non-trivial design decisions to be made when constructing a multi-key public key encryption or KEM algorithm. Some of these design and implementation decisions, if done incorrectly will result in a catastrophic loss of security. We leave it to the community to standardize analogous composite encryption and KEM schemes.</p>
 <h1 id="rfc.section.6">
 <a href="#rfc.section.6">6.</a> <a href="#appendices" id="appendices">Appendices</a>
 </h1>
