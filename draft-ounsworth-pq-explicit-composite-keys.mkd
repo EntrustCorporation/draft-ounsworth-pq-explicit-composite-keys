@@ -24,6 +24,7 @@ author:
     -
       ins: M. Ounsworth (Editor)
       name: Mike Ounsworth
+      org: Entrust Limited
       abbrev: Entrust
       street: 2500 Solandt Road – Suite 100
       city: Ottawa, Ontario
@@ -340,7 +341,8 @@ This section talks about how protocols like (D)TLS and IKEv2 are affected by thi
 <!-- End of In Practice section -->
 
 # IANA Considerations {#sec-iana}
-The ASN.1 module OID is TBD.  The id-alg-composite OID is to be assigned by IANA.  The authors suggest that IANA assign an OID on the id-pkix arc:
+
+This draft does not define any OIDs, however derivative drafts that define concrete algorithm pairs will. The authors suggest that IANA assign OIDs for explicit composite pairs on the id-pkix arc under a composite() arc.
 
 ~~~
 id-alg-composite OBJECT IDENTIFIER ::= {
