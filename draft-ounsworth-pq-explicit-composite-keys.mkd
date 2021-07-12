@@ -233,6 +233,8 @@ A CompositePrivateKey MUST contain at least one component private key, and they 
 
 The structure pk-explicitComposite contains all the necessary information in order for the ASN.1 compiler to generate composite signature structures that are explicitely bound to the specified pair of algorithms.
 
+EDNOTE: Is this helping, or adding complexity for no reason? In theory, explicit composite public keys can be used with generic composite signature and encryption structures (ie the SEQUENC OF model). 
+
 ### Explicit Signature Params
 
 The following ASN.1 object class then automatically generates the signature params structure from the types defined in pk-explicitComposite.
@@ -269,6 +271,9 @@ sa-explicitCompositeSignatureAlgorithm{OBJECT IDENTIFIER:algId, SIGNATURE-ALGORI
 }
 ~~~
 
+### Explicit Encryption and Key Exchange Params
+
+~~ TODO ~~ Need analogous structures to the signature ones above.
 
 ## Encoding Rules {#sec-encoding-rules}
 <!-- EDNOTE 7: Examples of how other specifications specify how a data structure is converted to a bit string can be found in RFC 2313, section 10.1.4, 3279 section 2.3.5, and RFC 4055, section 3.2. -->

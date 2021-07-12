@@ -382,6 +382,7 @@
 <link href="#rfc.section.2.3" rel="Chapter" title="2.3 Composite Signature">
 <link href="#rfc.section.2.3.1" rel="Chapter" title="2.3.1 Explicit Signature Params">
 <link href="#rfc.section.2.3.2" rel="Chapter" title="2.3.2 Explicit Composite Signature Algorithm">
+<link href="#rfc.section.2.3.3" rel="Chapter" title="2.3.3 Explicit Encryption and Key Exchange Params">
 <link href="#rfc.section.2.4" rel="Chapter" title="2.4 Encoding Rules">
 <link href="#rfc.section.3" rel="Chapter" title="3 In Practice">
 <link href="#rfc.section.3.1" rel="Chapter" title="3.1 PEM Storage of Composite Private Keys">
@@ -475,6 +476,8 @@
 <ul><li>2.3.1.   <a href="#rfc.section.2.3.1">Explicit Signature Params</a>
 </li>
 <li>2.3.2.   <a href="#rfc.section.2.3.2">Explicit Composite Signature Algorithm</a>
+</li>
+<li>2.3.3.   <a href="#rfc.section.2.3.3">Explicit Encryption and Key Exchange Params</a>
 </li>
 </ul><li>2.4.   <a href="#rfc.section.2.4">Encoding Rules</a>
 </li>
@@ -603,6 +606,7 @@ CompositePrivateKey ::= SEQUENCE SIZE (2..MAX) OF OneAsymmetricKey
 <a href="#rfc.section.2.3">2.3.</a> <a href="#sec-composite-sig-structs" id="sec-composite-sig-structs">Composite Signature</a>
 </h1>
 <p id="rfc.section.2.3.p.1">The structure pk-explicitComposite contains all the necessary information in order for the ASN.1 compiler to generate composite signature structures that are explicitely bound to the specified pair of algorithms.</p>
+<p id="rfc.section.2.3.p.2">EDNOTE: Is this helping, or adding complexity for no reason? In theory, explicit composite public keys can be used with generic composite signature and encryption structures (ie the SEQUENC OF model).</p>
 <h1 id="rfc.section.2.3.1">
 <a href="#rfc.section.2.3.1">2.3.1.</a> <a href="#explicit-signature-params" id="explicit-signature-params">Explicit Signature Params</a>
 </h1>
@@ -634,6 +638,10 @@ sa-explicitCompositeSignatureAlgorithm{OBJECT IDENTIFIER:algId, SIGNATURE-ALGORI
     SMIME-CAPS { IDENTIFIED BY algId }
 }
 </pre>
+<h1 id="rfc.section.2.3.3">
+<a href="#rfc.section.2.3.3">2.3.3.</a> <a href="#explicit-encryption-and-key-exchange-params" id="explicit-encryption-and-key-exchange-params">Explicit Encryption and Key Exchange Params</a>
+</h1>
+<p id="rfc.section.2.3.3.p.1">~~ TODO ~~ Need analogous structures to the signature ones above.</p>
 <h1 id="rfc.section.2.4">
 <a href="#rfc.section.2.4">2.4.</a> <a href="#sec-encoding-rules" id="sec-encoding-rules">Encoding Rules</a>
 </h1>
