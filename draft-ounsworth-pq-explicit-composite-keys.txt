@@ -798,10 +798,15 @@ Internet-Draft         PQ Explicit Composite Keys          February 2022
 
 8.2.  Informative References
 
+   [Bindel2017]
+              Bindel, N., Herath, U., McKague, M., and D. Stebila,
+              "Transitioning to a quantum-resistant public key
+              infrastructure", 2017.
+
    [I-D.ounsworth-pq-composite-sigs]
-              Ounsworth, M. and M. Pala, "Composite Keys and Signatures
-              For Use In Internet PKI", draft-ounsworth-pq-composite-
-              sigs-03 (work in progress), July 2020.
+              Ounsworth, M. and M. Pala, "Composite Signatures For Use
+              In Internet PKI", draft-ounsworth-pq-composite-sigs-05
+              (work in progress), July 2021.
 
 Authors' Addresses
 
@@ -823,6 +828,20 @@ Authors' Addresses
    Email: serge.mister@entrust.com
 
 
+
+
+
+
+
+
+
+
+
+Ounsworth, et al.        Expires August 16, 2022               [Page 15]
+
+Internet-Draft         PQ Explicit Composite Keys          February 2022
+
+
    John Gray
    Entrust Limited
    1000 Innovation Drive
@@ -837,4 +856,41 @@ Authors' Addresses
 
 
 
-Ounsworth, et al.        Expires August 16, 2022               [Page 15]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ounsworth, et al.        Expires August 16, 2022               [Page 16]
