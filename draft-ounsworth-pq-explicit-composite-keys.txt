@@ -2,14 +2,15 @@
 
 
 
-LAMPS                                              M. Ounsworth (Editor)
+LAMPS                                                       M. Ounsworth
 Internet-Draft                                                 S. Mister
-Intended status: Standards Track                                 Entrust
-Expires: January 13, 2022                                  July 12, 2021
+Intended status: Standards Track                                 J. Gray
+Expires: August 16, 2022                                         Entrust
+                                                       February 12, 2022
 
 
         Explicit Pairwise Composite Keys For Use In Internet PKI
-             draft-ounsworth-pq-explicit-composite-keys-00
+             draft-ounsworth-pq-explicit-composite-keys-01
 
 Abstract
 
@@ -47,20 +48,19 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 13, 2022.
+   This Internet-Draft will expire on August 16, 2022.
 
 
 
 
-
-Ounsworth (Editor) & MisExpires January 13, 2022                [Page 1]
+Ounsworth, et al.        Expires August 16, 2022                [Page 1]
 
-Internet-Draft         PQ Explicit Composite Keys              July 2021
+Internet-Draft         PQ Explicit Composite Keys          February 2022
 
 
 Copyright Notice
 
-   Copyright (c) 2021 IETF Trust and the persons identified as the
+   Copyright (c) 2022 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Ounsworth (Editor) & MisExpires January 13, 2022                [Page 2]
+Ounsworth, et al.        Expires August 16, 2022                [Page 2]
 
-Internet-Draft         PQ Explicit Composite Keys              July 2021
+Internet-Draft         PQ Explicit Composite Keys          February 2022
 
 
 1.  Introduction
@@ -165,9 +165,9 @@ Internet-Draft         PQ Explicit Composite Keys              July 2021
 
 
 
-Ounsworth (Editor) & MisExpires January 13, 2022                [Page 3]
+Ounsworth, et al.        Expires August 16, 2022                [Page 3]
 
-Internet-Draft         PQ Explicit Composite Keys              July 2021
+Internet-Draft         PQ Explicit Composite Keys          February 2022
 
 
    ALGORITHM: An information object class for identifying the type of
@@ -221,9 +221,9 @@ Internet-Draft         PQ Explicit Composite Keys              July 2021
 
 
 
-Ounsworth (Editor) & MisExpires January 13, 2022                [Page 4]
+Ounsworth, et al.        Expires August 16, 2022                [Page 4]
 
-Internet-Draft         PQ Explicit Composite Keys              July 2021
+Internet-Draft         PQ Explicit Composite Keys          February 2022
 
 
 2.1.  Composite Keys
@@ -277,9 +277,9 @@ ExplicitCompositePublicKey{PUBLIC-KEY:firstPublicKey, FirstPublicKeyType, PUBLIC
 
 
 
-Ounsworth (Editor) & MisExpires January 13, 2022                [Page 5]
+Ounsworth, et al.        Expires August 16, 2022                [Page 5]
 
-Internet-Draft         PQ Explicit Composite Keys              July 2021
+Internet-Draft         PQ Explicit Composite Keys          February 2022
 
 
    CompositePrivateKey ::= SEQUENCE SIZE (2..MAX) OF OneAsymmetricKey
@@ -333,9 +333,9 @@ ExplicitSignatureParams{SIGNATURE-ALGORITHM:firstAlg, SIGNATURE-ALGORITHM:second
 
 
 
-Ounsworth (Editor) & MisExpires January 13, 2022                [Page 6]
+Ounsworth, et al.        Expires August 16, 2022                [Page 6]
 
-Internet-Draft         PQ Explicit Composite Keys              July 2021
+Internet-Draft         PQ Explicit Composite Keys          February 2022
 
 
 2.3.2.  Explicit Composite Signature Algorithm
@@ -389,9 +389,9 @@ sa-explicitCompositeSignatureAlgorithm{OBJECT IDENTIFIER:algId, SIGNATURE-ALGORI
 
 
 
-Ounsworth (Editor) & MisExpires January 13, 2022                [Page 7]
+Ounsworth, et al.        Expires August 16, 2022                [Page 7]
 
-Internet-Draft         PQ Explicit Composite Keys              July 2021
+Internet-Draft         PQ Explicit Composite Keys          February 2022
 
 
    o  The size of these certs and cert chains.
@@ -445,9 +445,9 @@ Internet-Draft         PQ Explicit Composite Keys              July 2021
 
 
 
-Ounsworth (Editor) & MisExpires January 13, 2022                [Page 8]
+Ounsworth, et al.        Expires August 16, 2022                [Page 8]
 
-Internet-Draft         PQ Explicit Composite Keys              July 2021
+Internet-Draft         PQ Explicit Composite Keys          February 2022
 
 
    The value of the publicKey (if present) SHALL be set to the DER
@@ -501,9 +501,9 @@ Internet-Draft         PQ Explicit Composite Keys              July 2021
 
 
 
-Ounsworth (Editor) & MisExpires January 13, 2022                [Page 9]
+Ounsworth, et al.        Expires August 16, 2022                [Page 9]
 
-Internet-Draft         PQ Explicit Composite Keys              July 2021
+Internet-Draft         PQ Explicit Composite Keys          February 2022
 
 
 5.  Security Considerations
@@ -557,9 +557,9 @@ Internet-Draft         PQ Explicit Composite Keys              July 2021
 
 
 
-Ounsworth (Editor) & MisExpires January 13, 2022               [Page 10]
+Ounsworth, et al.        Expires August 16, 2022               [Page 10]
 
-Internet-Draft         PQ Explicit Composite Keys              July 2021
+Internet-Draft         PQ Explicit Composite Keys          February 2022
 
 
 5.3.  Checking for Compromised Key Reuse
@@ -613,9 +613,9 @@ Internet-Draft         PQ Explicit Composite Keys              July 2021
 
 
 
-Ounsworth (Editor) & MisExpires January 13, 2022               [Page 11]
+Ounsworth, et al.        Expires August 16, 2022               [Page 11]
 
-Internet-Draft         PQ Explicit Composite Keys              July 2021
+Internet-Draft         PQ Explicit Composite Keys          February 2022
 
 
    -- Public Key
@@ -669,9 +669,9 @@ Internet-Draft         PQ Explicit Composite Keys              July 2021
 
 
 
-Ounsworth (Editor) & MisExpires January 13, 2022               [Page 12]
+Ounsworth, et al.        Expires August 16, 2022               [Page 12]
 
-Internet-Draft         PQ Explicit Composite Keys              July 2021
+Internet-Draft         PQ Explicit Composite Keys          February 2022
 
 
 id-sa-entrust-sha256RSAandECDSA OBJECT IDENTIFIER ::= { 1 2 3 4 }
@@ -725,9 +725,9 @@ sa-entrust-sha256RSAandECDSA SIGNATURE-ALGORITHM ::= sa-explicitCompositeSignatu
 
 
 
-Ounsworth (Editor) & MisExpires January 13, 2022               [Page 13]
+Ounsworth, et al.        Expires August 16, 2022               [Page 13]
 
-Internet-Draft         PQ Explicit Composite Keys              July 2021
+Internet-Draft         PQ Explicit Composite Keys          February 2022
 
 
 8.1.  Normative References
@@ -781,9 +781,9 @@ Internet-Draft         PQ Explicit Composite Keys              July 2021
 
 
 
-Ounsworth (Editor) & MisExpires January 13, 2022               [Page 14]
+Ounsworth, et al.        Expires August 16, 2022               [Page 14]
 
-Internet-Draft         PQ Explicit Composite Keys              July 2021
+Internet-Draft         PQ Explicit Composite Keys          February 2022
 
 
    [RFC8411]  Schaad, J. and R. Andrews, "IANA Registration for the
@@ -811,7 +811,7 @@ Authors' Addresses
    Ottawa, Ontario  K2K 3G5
    Canada
 
-   Email: mike.ounsworth@entrustdatacard.com
+   Email: mike.ounsworth@entrust.com
 
 
    Serge Mister
@@ -820,7 +820,16 @@ Authors' Addresses
    Ottawa, Ontario  K2K 1E3
    Canada
 
-   Email: serge.mister@entrustdatacard.com
+   Email: serge.mister@entrust.com
+
+
+   John Gray
+   Entrust Limited
+   1000 Innovation Drive
+   Ottawa, Ontario
+   Canada
+
+   Email: john.gray@entrust.com
 
 
 
@@ -828,13 +837,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-
-
-Ounsworth (Editor) & MisExpires January 13, 2022               [Page 15]
+Ounsworth, et al.        Expires August 16, 2022               [Page 15]

@@ -2,13 +2,13 @@
 title: Explicit Pairwise Composite Keys For Use In Internet PKI
 abbrev: PQ Explicit Composite Keys
 # <!-- EDNOTE: Edits the draft name -->
-docname: draft-ounsworth-pq-explicit-composite-keys-00
+docname: draft-ounsworth-pq-explicit-composite-keys-01
 # <!-- date: 2012-01-13 -->
 # <!-- date: 2012-01 -->
 # <!-- date: 2012 -->
 
 # <!-- stand_alone: true -->
-<!-- ipr: trust200902 -->
+ipr: trust200902
 area: Security
 wg: LAMPS
 kw: Internet-Draft
@@ -22,7 +22,7 @@ pi:    # can use array (if all yes) or hash here
 
 author:
     -
-      ins: M. Ounsworth (Editor)
+      ins: M. Ounsworth
       name: Mike Ounsworth
       org: Entrust Limited
       abbrev: Entrust
@@ -30,7 +30,7 @@ author:
       city: Ottawa, Ontario
       country: Canada
       code: K2K 3G5
-      email: mike.ounsworth@entrustdatacard.com
+      email: mike.ounsworth@entrust.com
 
     -
       ins: S. Mister
@@ -41,7 +41,17 @@ author:
       city: Ottawa, Ontario
       country: Canada
       code: K2K 1E3
-      email: serge.mister@entrustdatacard.com
+      email: serge.mister@entrust.com
+
+    -
+      ins: J. Gray
+      name: John Gray
+      org: Entrust Limited
+      abbrev: Entrust
+      street: 1000 Innovation Drive
+      city: Ottawa, Ontario
+      country: Canada
+      email: john.gray@entrust.com
 
 normative:
   RFC1421:

@@ -407,9 +407,9 @@
   <meta name="generator" content="xml2rfc version 2.40.0 - https://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
-  <meta name="dct.creator" content="Ounsworth (Editor), M. and S. Mister" />
-  <meta name="dct.identifier" content="urn:ietf:id:draft-ounsworth-pq-explicit-composite-keys-00" />
-  <meta name="dct.issued" scheme="ISO8601" content="2021-07-12" />
+  <meta name="dct.creator" content="Ounsworth, M., Mister, S., and J. Gray" />
+  <meta name="dct.identifier" content="urn:ietf:id:draft-ounsworth-pq-explicit-composite-keys-01" />
+  <meta name="dct.issued" scheme="ISO8601" content="2022-02-12" />
   <meta name="dct.abstract" content="With the widespread adoption of post-quantum cryptography will come the need for an entity to possess multiple public keys on different cryptographic algorithms. Since the trustworthiness of individual post-quantum algorithms is at question, a multi-key cryptographic operation will need to be performed in such a way that breaking it requires breaking each of the component algorithms individually. This requires defining new structures for holding composite public keys and composite signature data. This draft defines a structure generic enough to be useful beyond the post-quantum transition for any situation where a widely-supported but untrusted algorithm is being migrated to newer cryptography. This document defines structures for binding an explicit pair of cryptographic algorithms together into a single object identifier, and it provides ASN.1 structures for encoding these pairwise composite public keys, private keys in wire protocols, as well as using them in conjunction with composite signatures, encryption and key transport mechanisms. " />
   <meta name="description" content="With the widespread adoption of post-quantum cryptography will come the need for an entity to possess multiple public keys on different cryptographic algorithms. Since the trustworthiness of individual post-quantum algorithms is at question, a multi-key cryptographic operation will need to be performed in such a way that breaking it requires breaking each of the component algorithms individually. This requires defining new structures for holding composite public keys and composite signature data. This draft defines a structure generic enough to be useful beyond the post-quantum transition for any situation where a widely-supported but untrusted algorithm is being migrated to newer cryptography. This document defines structures for binding an explicit pair of cryptographic algorithms together into a single object identifier, and it provides ASN.1 structures for encoding these pairwise composite public keys, private keys in wire protocols, as well as using them in conjunction with composite signatures, encryption and key transport mechanisms. " />
 
@@ -422,7 +422,7 @@
     
     	<tr>
 <td class="left">LAMPS</td>
-<td class="right">M. Ounsworth (Editor)</td>
+<td class="right">M. Ounsworth</td>
 </tr>
 <tr>
 <td class="left">Internet-Draft</td>
@@ -430,11 +430,15 @@
 </tr>
 <tr>
 <td class="left">Intended status: Standards Track</td>
+<td class="right">J. Gray</td>
+</tr>
+<tr>
+<td class="left">Expires: August 16, 2022</td>
 <td class="right">Entrust</td>
 </tr>
 <tr>
-<td class="left">Expires: January 13, 2022</td>
-<td class="right">July 12, 2021</td>
+<td class="left"></td>
+<td class="right">February 12, 2022</td>
 </tr>
 
     	
@@ -442,7 +446,7 @@
   </table>
 
   <p class="title">Explicit Pairwise Composite Keys For Use In Internet PKI<br />
-  <span class="filename">draft-ounsworth-pq-explicit-composite-keys-00</span></p>
+  <span class="filename">draft-ounsworth-pq-explicit-composite-keys-01</span></p>
   
   <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
 <p>With the widespread adoption of post-quantum cryptography will come the need for an entity to possess multiple public keys on different cryptographic algorithms. Since the trustworthiness of individual post-quantum algorithms is at question, a multi-key cryptographic operation will need to be performed in such a way that breaking it requires breaking each of the component algorithms individually. This requires defining new structures for holding composite public keys and composite signature data. This draft defines a structure generic enough to be useful beyond the post-quantum transition for any situation where a widely-supported but untrusted algorithm is being migrated to newer cryptography.</p>
@@ -451,9 +455,9 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on January 13, 2022.</p>
+<p>This Internet-Draft will expire on August 16, 2022.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
-<p>Copyright (c) 2021 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
+<p>Copyright (c) 2022 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
 
   
@@ -914,7 +918,7 @@ sa-entrust-sha256RSAandECDSA SIGNATURE-ALGORITHM ::= sa-explicitCompositeSignatu
 	<span class="vcardline">
 	  <span class="fn">Mike Ounsworth</span> 
 	  <span class="n hidden">
-		<span class="family-name">Ounsworth (Editor)</span>
+		<span class="family-name">Ounsworth</span>
 	  </span>
 	</span>
 	<span class="org vcardline">Entrust Limited</span>
@@ -928,7 +932,7 @@ sa-entrust-sha256RSAandECDSA SIGNATURE-ALGORITHM ::= sa-explicitCompositeSignatu
 	  </span>
 	  <span class="country-name vcardline">Canada</span>
 	</span>
-	<span class="vcardline">EMail: <a href="mailto:mike.ounsworth@entrustdatacard.com">mike.ounsworth@entrustdatacard.com</a></span>
+	<span class="vcardline">EMail: <a href="mailto:mike.ounsworth@entrust.com">mike.ounsworth@entrust.com</a></span>
 
   </address>
 </div><div class="avoidbreak">
@@ -950,7 +954,29 @@ sa-entrust-sha256RSAandECDSA SIGNATURE-ALGORITHM ::= sa-explicitCompositeSignatu
 	  </span>
 	  <span class="country-name vcardline">Canada</span>
 	</span>
-	<span class="vcardline">EMail: <a href="mailto:serge.mister@entrustdatacard.com">serge.mister@entrustdatacard.com</a></span>
+	<span class="vcardline">EMail: <a href="mailto:serge.mister@entrust.com">serge.mister@entrust.com</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">John Gray</span> 
+	  <span class="n hidden">
+		<span class="family-name">Gray</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Entrust Limited</span>
+	<span class="adr">
+	  <span class="vcardline">1000 Innovation Drive</span>
+
+	  <span class="vcardline">
+		<span class="locality">Ottawa, Ontario</span>,  
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline">Canada</span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:john.gray@entrust.com">john.gray@entrust.com</a></span>
 
   </address>
 </div>
